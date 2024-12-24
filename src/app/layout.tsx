@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import "react-horizontal-scrolling-menu/dist/styles.css";
 import "./globals.css";
+import Overlay from "./ui/components/Overlay";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,9 +27,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased relative`}
       >
         {children}
+        <Overlay />
       </body>
     </html>
   );

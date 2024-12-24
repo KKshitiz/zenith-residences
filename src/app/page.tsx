@@ -1,101 +1,76 @@
-import Image from "next/image";
+"use client";
+import { useState } from "react";
+import InteractiveBuildingLayout from "./ui/components/InteractiveBuildingLayout";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [isPublicZoneHover, setIsPublicZoneHover] = useState(false);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+  return (
+    <div className="bg-[url('/scene-web.webp')] min-h-screen bg-cover bg-center relative">
+      {/* <picture className="w-full h-full">
+        <source srcSet="/scene-mobile.webp" media="(orientation: portrait)" />
+        <source
+          srcSet="/scene-web.webp"
+          media="(max-height: 920px), (max-width: 1025px)"
+        />
+      </picture> */}
+
+      <svg
+        className="absolute w-full h-full top-0 left-0  z-50"
+        viewBox="0 0 1440 900"
+        preserveAspectRatio="xMaxYMid slice"
+      >
+        <g id="floors">
+          <InteractiveBuildingLayout />
+        </g>
+        <g
+          id="public-zones"
+          className="cursor-pointer"
+          onClick={() => {
+            console.log("Launch carousel");
+          }}
+          onMouseEnter={() => setIsPublicZoneHover(true)}
+          onMouseLeave={() => setIsPublicZoneHover(false)}
+        >
+          <g id="public-zones-floor">
+            <path
+              fill="#DEC29A"
+              fillOpacity={isPublicZoneHover ? 0.5 : 0}
+              d="M853.286 679.01L867.033 679.468C867.572 679.486 868 679.928 868 680.467V695.198C868 695.667 868.326 696.072 868.783 696.174L890.5 701L905.5 702.5H914L950 701.5L981.5 700.5L992.927 699.009C992.976 699.003 993.025 699 993.073 699.001L1023 699.5L1046 698L1093.98 697.021C1094.54 697.009 1095 697.46 1095 698.021V749.557C1095 750.087 1094.59 750.524 1094.06 750.555L1070.56 751.938C1069.98 751.972 1069.5 751.515 1069.5 750.939V737.554C1069.5 737.209 1069.32 736.889 1069.03 736.706L1042.03 719.831C1041.71 719.629 1041.29 719.629 1040.97 719.831L1029.65 726.905C1029.55 726.968 1029.46 727.048 1029.39 727.141L1017.7 742.236C1017.57 742.407 1017.39 742.531 1017.18 742.588L997.725 747.938C997.577 747.979 997.44 748.053 997.326 748.155L988.784 755.747C988.601 755.91 988.365 756 988.12 756H981.5C981.185 756 980.889 755.852 980.7 755.6L973.8 746.4C973.611 746.148 973.315 746 973 746H955.682C955.27 746 954.901 746.252 954.751 746.634L949.749 759.366C949.599 759.748 949.23 760 948.818 760H938.633C938.031 760 937.566 759.473 937.641 758.876L938.5 752V746.209C938.5 746.071 938.471 745.935 938.416 745.808L935.254 738.582C935.099 738.227 935.163 737.814 935.418 737.522L937.049 735.659C937.615 735.012 937.155 734 936.296 734H933.82C933.612 734 933.409 733.935 933.239 733.814L930.261 731.686C930.091 731.565 929.888 731.5 929.68 731.5H920.566C920.215 731.5 919.889 731.684 919.709 731.986L917.143 736.262C917.049 736.418 917 736.596 917 736.777V739C917 739.552 916.552 740 916 740H896.095C896.032 740 895.969 740.006 895.906 740.018L883.166 742.468C883.056 742.489 882.951 742.529 882.854 742.585L873.732 747.865C873.58 747.954 873.407 748 873.231 748H868.554C868.209 748 867.889 748.178 867.706 748.47L863 756L860.424 760.293C860.178 760.704 860.257 761.231 860.612 761.551L864.669 765.202C864.88 765.392 865 765.662 865 765.945V772.882C865 773.261 865.214 773.607 865.553 773.776L867.658 774.829C867.878 774.939 868.131 774.964 868.369 774.899L872.554 773.758C873.08 773.615 873.623 773.918 873.777 774.441L875.772 781.226C875.905 781.678 875.705 782.161 875.292 782.386L871.673 784.36C871.087 784.68 870.973 785.473 871.445 785.945L872.943 787.443C873.27 787.77 873.33 788.278 873.089 788.672L868.265 796.566C868.098 796.839 867.812 797.015 867.494 797.042L831.755 799.979C831.588 799.993 831.42 799.964 831.267 799.896L791.594 782.264C791.233 782.103 791 781.745 791 781.35V696C791 695.448 791.448 695 792 695H802.124C802.366 695 802.6 694.912 802.783 694.753L806.291 691.683C806.428 691.563 806.595 691.483 806.774 691.451L820.295 689.037C820.43 689.012 820.559 688.961 820.674 688.884L823.262 687.159C823.417 687.055 823.599 686.997 823.786 686.991L839.749 686.508C839.914 686.503 840.075 686.457 840.218 686.374L852.753 679.143C852.914 679.049 853.099 679.003 853.286 679.01Z"
+            ></path>
+          </g>
+          <g id="public-zones-tag">
+            <line
+              stroke="#DEC29A"
+              x1={1094.26}
+              y1={718.616}
+              x2={1122.97}
+              y2={687.324}
+              strokeWidth={2}
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+            <rect
+              id="tag-fill"
+              fill={isPublicZoneHover ? "#DEC29A" : "#1D2A28"}
+              stroke="#DEC29A"
+              strokeWidth={2}
+              x={1091}
+              y={649}
+              width="146"
+              height="40"
+              rx="8"
+            />
+            <text
+              x={1115}
+              y={675}
+              fontSize={18}
+              fontFamily=""
+              fill={isPublicZoneHover ? "black" : "#DEC29A"}
+            >
+              Public zones
+            </text>
+          </g>
+        </g>
+      </svg>
     </div>
   );
 }
