@@ -8,6 +8,7 @@ const InteractiveBuildingLayout = () => {
   const [hoverFloorNumber, setHoverFloorNumber] = useState<number | undefined>(
     undefined
   );
+
   return (
     <g
       onMouseEnter={() => {
@@ -23,6 +24,7 @@ const InteractiveBuildingLayout = () => {
           key={index}
           id={`floor-${floor.floorNumber}`}
           fill="#DEC29A"
+          className="cursor-pointer"
           fillOpacity={
             hoverFloorNumber === floor.floorNumber
               ? 1.0
