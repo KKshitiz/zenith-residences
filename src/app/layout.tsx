@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import "rc-slider/assets/index.css";
 import "react-horizontal-scrolling-menu/dist/styles.css";
 import "./globals.css";
 import Overlay from "./ui/components/Overlay";

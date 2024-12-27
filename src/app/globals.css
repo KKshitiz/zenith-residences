@@ -19,3 +19,16 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+input[type="checkbox"] {
+  accent-color: var(--foreground);
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+input[type="checkbox"]:checked {
+  background-color: var(--foreground);
+  border-color: var(--foreground);
+}

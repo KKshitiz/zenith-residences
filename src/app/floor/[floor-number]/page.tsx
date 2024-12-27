@@ -29,14 +29,6 @@ const FloorPlanPage = () => {
         height={100}
         className="fixed top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 lg:bottom-24 lg:right-5 lg:left-auto lg:top-auto lg:translate-x-0 lg:translate-y-0"
       />
-      <div className="fixed bottom-5 right-5 flex flex-col z-20">
-        <button className="" onClick={handleZoomIn}>
-          +
-        </button>
-        <button className="" onClick={handleZoomOut}>
-          -
-        </button>
-      </div>
 
       <TransformWrapper
         initialScale={1}
@@ -45,6 +37,9 @@ const FloorPlanPage = () => {
         disablePadding
         ref={transformComponentRef}
         doubleClick={{ disabled: true }}
+        onZoom={(ref, event) => {
+          console.log(event);
+        }}
       >
         <TransformComponent
           contentStyle={{ width: "100%", height: "100%" }}

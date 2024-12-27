@@ -3,10 +3,11 @@ import Filters from "./Filters";
 import HorizontalFlatSelector from "./HorizontalFlatSelector";
 import NavBar from "./NavBar";
 import ProjectStatistics from "./ProjectStatistics";
+import ZoomControls from "./ZoomControls";
 
 const Overlay = () => {
   return (
-    <div className="hidden flex flex-col absolute top-0 left-0 justify-between w-full h-full p-3 z-50">
+    <div className="flex flex-col absolute top-0 left-0 justify-between w-full h-full p-3 z-50">
       <NavBar />
       <div className="flex flex-col justify-between w-full h-full">
         <Filters />
@@ -21,9 +22,12 @@ const Overlay = () => {
         </div>
 
         {/* Bottom stats in large screen */}
-        <div className="hidden lg:flex justify-between items-end">
+        <div className="hidden lg:flex justify-between">
           <ProjectStatistics />
-          <AvailabilityLegend />
+          <div className="flex gap-2">
+            <AvailabilityLegend />
+            <ZoomControls />
+          </div>
         </div>
       </div>
       {/* <BrochureForm /> */}

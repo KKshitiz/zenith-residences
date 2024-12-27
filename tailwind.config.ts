@@ -36,6 +36,9 @@ export default {
         ".scrollbar-none::-webkit-scrollbar": {
           display: "none", // WebKit browsers
         },
+        ".card": {
+          "@apply rounded-lg backdrop-blur-md bg-dark": {},
+        },
       });
     }),
   ],
