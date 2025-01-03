@@ -1,4 +1,6 @@
 "use client";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 import Image from "next/image";
 import { useRef } from "react";
 import {
@@ -10,7 +12,15 @@ import floorPlan from "../../../../public/floor_plan.webp";
 import InteractiveFloorLayout from "../../ui/components/InteractiveFloorLayout";
 
 const FloorPlanPage = () => {
+  const bgRef = useRef<HTMLDivElement>(null);
   const transformComponentRef = useRef<ReactZoomPanPinchContentRef>(null);
+
+  useGSAP(
+    () => {
+      gsap.to(bgRef.current, { opacity: 1, duration: 3 });
+    },
+    { scope: bgRef }
+  );
 
   const handleZoomIn = () => {
     transformComponentRef.current?.zoomIn();
@@ -21,7 +31,10 @@ const FloorPlanPage = () => {
   };
 
   return (
-    <div className="bg-[url('/main-background.jpg')] h-screen bg-cover bg-center relative">
+    <div
+      ref={bgRef}
+      className="bg-[url('/main-background.jpg')] h-screen bg-cover bg-center relative opacity-0"
+    >
       <Image
         src="/compass.svg"
         alt="Compass"

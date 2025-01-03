@@ -4,6 +4,7 @@ import "rc-slider/assets/index.css";
 import "react-horizontal-scrolling-menu/dist/styles.css";
 import "./globals.css";
 import Overlay from "./ui/components/Overlay";
+import PublicAreaCarousel from "./ui/components/PublicAreaCarousel";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,10 +29,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased relative`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased relative h-screen`}
       >
         {children}
         <Overlay />
+        <PublicAreaCarousel show={false} handleClose={console.log("closed")} />
       </body>
     </html>
   );

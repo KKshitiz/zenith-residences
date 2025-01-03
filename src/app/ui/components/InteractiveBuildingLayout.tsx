@@ -1,13 +1,18 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { floorSvgPaths } from "../../constants/floorSvgPaths";
+import {
+  floorSvgPathsDesktop,
+  floorSvgPathsMobile,
+} from "../../constants/floorSvgPaths";
 
-const InteractiveBuildingLayout = () => {
+const InteractiveBuildingLayout = ({ isPortrait }: { isPortrait: boolean }) => {
   const router = useRouter();
   const [isBuildingHover, setIsBuildingHover] = useState(false);
   const [hoverFloorNumber, setHoverFloorNumber] = useState<number | undefined>(
     undefined
   );
+
+  const floorSvgPaths = isPortrait ? floorSvgPathsMobile : floorSvgPathsDesktop;
 
   return (
     <g
