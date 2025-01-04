@@ -2,24 +2,21 @@
 import { publicZoneData } from "@/app/constants/publicZoneData";
 import { ChevronLeftIcon, ChevronRightIcon, XIcon } from "lucide-react";
 import Image from "next/image";
-import React, { useState } from "react";
+import { useState } from "react";
 
-type PublicAreaCarouselProps = {
-  show: boolean;
-  handleClose: () => void;
-};
-
-const PublicAreaCarousel: React.FC<PublicAreaCarouselProps> = ({
-  show,
-  handleClose,
-}) => {
+const PublicAreaCarousel = () => {
+  const [showCarousel, setShowCarousel] = useState(false);
   const [index, setIndex] = useState(0);
 
   const handleSelect = (selectedIndex: number) => {
     setIndex(selectedIndex);
   };
 
-  if (!show) return null;
+  const handleClose = () => {
+    setShowCarousel((prev) => !prev);
+  };
+
+  if (!showCarousel) return null;
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-90">

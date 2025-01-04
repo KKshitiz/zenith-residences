@@ -22,13 +22,13 @@ const FloorPlanPage = () => {
     { scope: bgRef }
   );
 
-  const handleZoomIn = () => {
-    transformComponentRef.current?.zoomIn();
-  };
+  // const handleZoomIn = () => {
+  //   transformComponentRef.current?.zoomIn();
+  // };
 
-  const handleZoomOut = () => {
-    transformComponentRef.current?.zoomOut();
-  };
+  // const handleZoomOut = () => {
+  //   transformComponentRef.current?.zoomOut();
+  // };
 
   return (
     <div

@@ -33,7 +33,7 @@ export default function RootLayout({
       >
         {children}
         <Overlay />
-        <PublicAreaCarousel show={false} handleClose={console.log("closed")} />
+        <PublicAreaCarousel />
       </body>
     </html>
   );
