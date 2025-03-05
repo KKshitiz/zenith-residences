@@ -1,9 +1,11 @@
-export type Apartment = {
+export type ApartmentModel = {
   id: number;
   created_at: Date;
+  floor: number;
   price: number;
   area: number;
   number_of_rooms: number;
-  unit_number: string;
-  availability: string;
+  apartment_number: number;
+  availability: "available" | "reserved" | "sold";
+  views: string[];
 };

@@ -3,8 +3,30 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --black: #000000;
+  --dark-main: rgba(29, 42, 40, 0.93);
+  --white: #ffffff;
+  
+  --color: #dec29a
+  --color1: #dfdfdf;
+  --color2: #ebebeb;
+  --color3: #1d2a28;
+  --color4: #545454;
+  --scrollbar: rgba(217, 217, 217, 0.8)
+  --border-radius: 0.5rem;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar);
+  border-radius: 10px;
+}
+*{
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -14,21 +36,64 @@
   }
 }
 
+html, body {
+  height: 100%;
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
 
-input[type="checkbox"] {
-  accent-color: var(--foreground);
-  width: 16px;
-  height: 16px;
-  cursor: pointer;
-  background-color: transparent;
+.gm-style-iw {
+  padding: 0 !important;
+}
+.gm-style-iw-chr {
+  background-color: var(--dark) !important;
+}
+/* Info window header styling */
+.gm-style-iw-ch {
+  text-transform: uppercase !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  margin-left: 15px !important;
+  color: white !important;
+}
+/* Info window close icon */
+.gm-ui-hover-effect {
+  color: white;
+  filter: invert();
+}
+.gm-style-iw-d {
+  /* padding: 0 !important; */
+  overflow: hidden !important;
+  /* background-color: red !important; */
+}
+/* .gm-style-iw-c, */
+.gm-style-iw-tc::after {
+  background-color: black !important;
 }
 
-input[type="checkbox"]:checked {
-  background-color: var(--foreground);
-  border-color: var(--foreground);
+
+/* Find some better alternative from the library rather than directly changing the styles */
+.ant-checkbox-disabled {
+  .ant-checkbox-inner {
+    border-color: #7d7d7d !important;
+  }
 }
+
+.react-horizontal-scrolling-menu--item:first-child,
+.react-horizontal-scrolling-menu--item:last-child {
+  flex-grow: 1;
+  display: flex;
+}
+
+.react-horizontal-scrolling-menu--item:first-child {
+  justify-content: flex-end;
+}
+
+.react-horizontal-scrolling-menu--item:last-child {
+  justify-content: flex-start;
+}
+

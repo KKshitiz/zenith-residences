@@ -20,6 +20,26 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      zIndex: {
+        overlay: "100",
+      },
+      keyframes: {
+        fadeIn: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+        slideIn: {
+          "0%": {
+            transform: "translate(0%, 100%)",
+            opacity: "0",
+          },
+          "100%": { transform: "translate(0%, 0%)", opacity: "1" },
+        },
+        zoomIn: {
+          "0%": { scale: "0" },
+          "100%": { scale: "1" },
+        },
+      },
     },
   },
   plugins: [
@@ -38,6 +58,10 @@ export default {
         },
         ".card": {
           "@apply rounded-lg backdrop-blur-md bg-dark": {},
+        },
+        ".button": {
+          "@apply rounded-md bg-primary text-black px-5 py-3 uppercase hover:brightness-90":
+            {},
         },
       });
     }),
